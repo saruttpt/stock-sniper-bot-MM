@@ -11,8 +11,7 @@ def run_sniper():
         response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.text, 'html.parser')
         
-        # ดึงข้อมูลหุ้น (ระบบจำลองตัวอย่างข้อมูลส่งเข้า Make)
-        # ตัวอย่างโครงสร้างที่ส่งไปให้ Make.com
+        # ข้อมูลจำลองหุ้น
         payload = {
             "source": "GitHub Actions Cloud",
             "stocks": [
@@ -21,7 +20,7 @@ def run_sniper():
             ]
         }
         
-        # 2. ยิงเข้า Make.com Webhook URL
+        # 2. ใส่ Webhook URL จริงของคุณตรงนี้ให้ถูกต้อง
         webhook_url = "https://hook.eu1.make.com/g71ggxv9v46il69gt6i74roomkkamo2l"
         res = requests.post(webhook_url, json=payload)
         print("Webhook Status:", res.status_code)
